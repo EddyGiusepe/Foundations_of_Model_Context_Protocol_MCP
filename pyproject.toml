@@ -1,0 +1,16 @@
+[project]
+name = "model-context-protocol-mcp"
+version = "0.1.0"
+description = "O protocolo Protocolo de contexto de modelo (MCP) é um padrão aberto que permite que grandes modelos de linguagem interajam dinamicamente com ferramentas externas, bancos de dados e APIs por meio de uma interface padronizada."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp[cli]>=1.6.0",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+]

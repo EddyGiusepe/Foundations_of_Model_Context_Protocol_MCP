@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 """
+Senior Data Scientist.: Dr. Eddy Giusepe Chirinos Isidro
+
 Cliente para interagir com o servidor Greeter MCP.
 
 Run
@@ -56,12 +58,13 @@ class GreeterClient:
     async def process_greeting(self, greeting: str) -> str:
         """Processa uma saudação usando a ferramenta greet diretamente"""
         greeting_lower = greeting.lower()
-        
+
         # Verifica se a entrada é uma das saudações esperadas
         if greeting_lower in ["olá", "oi", "hey"]:
             # Chama diretamente a ferramenta greet
             result = await self.session.call_tool("greet", {})
-            return f"[Chamando ferramenta greet]\n{result.content}"
+            print(f"Chamando ferramenta greet: {result.content}")
+            return result.content[0].text
         else:
             return "Por favor, use 'Olá', 'Oi' ou 'Hey' para receber uma saudação."
 

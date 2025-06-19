@@ -21,9 +21,13 @@ from contextlib import AsyncExitStack
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from anthropic import Anthropic
-from dotenv import load_dotenv
+import sys
+import os
 
-load_dotenv()  # load environment variables from .env
+# Adiciona o diretório raiz do projeto ao PATH do Python:
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from config.settings import ANTHROPIC_API_KEY
 
 
 class MCPClient:
@@ -31,7 +35,7 @@ class MCPClient:
         # Inicia session e client objects:
         self.session: Optional[ClientSession] = None
         self.exit_stack = AsyncExitStack()
-        self.anthropic = Anthropic()
+        self.anthropic = Anthropic(api_key=ANTHROPIC_API_KEY)
 
     async def connect_to_server(self, server_script_path: str):
         """Connecta ao servidor MCP
@@ -84,6 +88,7 @@ class MCPClient:
             max_tokens=1000,
             messages=messages,
             tools=available_tools,
+            temperature=0.1
         )
 
         # Processa resposta e lida com chamadas de ferramenta:

@@ -15,9 +15,14 @@ from contextlib import AsyncExitStack
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from anthropic import Anthropic
-from dotenv import load_dotenv
+import sys
+import os
 
-load_dotenv()  # carrega variáveis de ambiente do arquivo .env
+# Adiciona o diretório raiz do projeto ao PATH do Python:
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from config.settings import ANTHROPIC_API_KEY
+
 
 
 class GreeterClient:
@@ -25,7 +30,7 @@ class GreeterClient:
         # Inicia objetos de session e client:
         self.session: Optional[ClientSession] = None
         self.exit_stack = AsyncExitStack()
-        self.anthropic = Anthropic()
+        self.anthropic = Anthropic(api_key=ANTHROPIC_API_KEY)
 
     async def connect_to_server(self, server_script_path: str):
         """Conecta ao servidor MCP Greeter

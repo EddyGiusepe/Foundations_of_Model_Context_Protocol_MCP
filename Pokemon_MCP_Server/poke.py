@@ -1,13 +1,20 @@
 #! /usr/bin/env python3
 """
 Senior Data Scientist.: Dr. Eddy Giusepe Chirinos Isidro
+
+Script poke.py
+==============
+Você pode usar o modo desenvolvimento, para testar a ferramenta.
+No README mostrarei os detalhes.
+mcp dev poke.py
 """
 import httpx
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("poke")
 
-POKEAPI_BASE = "https://pokeapi.co/api/v2" # https://pokeapi.co/
+POKEAPI_BASE = "https://pokeapi.co/api/v2"  # https://pokeapi.co/
+
 
 # --- Auxiliar para buscar dados de Pokémon ---
 async def fetch_pokemon_data(name: str) -> dict:
@@ -20,6 +27,7 @@ async def fetch_pokemon_data(name: str) -> dict:
             pass
     return {}
 
+
 # --- Ferramenta (Tool): Obter informações sobre um Pokémon ---
 @mcp.tool()
 async def get_pokemon_info(name: str) -> str:
@@ -28,9 +36,9 @@ async def get_pokemon_info(name: str) -> str:
     if not data:
         return f"No data found for Pokémon: {name}"
 
-    stats = {stat['stat']['name']: stat['base_stat'] for stat in data['stats']}
-    types_ = [t['type']['name'] for t in data['types']]
-    abilities = [a['ability']['name'] for a in data['abilities']]
+    stats = {stat["stat"]["name"]: stat["base_stat"] for stat in data["stats"]}
+    types_ = [t["type"]["name"] for t in data["types"]]
+    abilities = [a["ability"]["name"] for a in data["abilities"]]
 
     return f"""
 Name: {data['name'].capitalize()}
@@ -39,11 +47,19 @@ Abilities: {', '.join(abilities)}
 Stats: {', '.join(f"{k}: {v}" for k, v in stats.items())}
 """
 
+
 # --- Ferramenta (Tool): Criar um time de Pokémon para um torneio ---
 @mcp.tool()
 async def create_tournament_squad() -> str:
     """Criar um time poderoso de Pokémon para um torneio."""
-    top_pokemon = ["charizard", "garchomp", "lucario", "dragonite", "metagross", "gardevoir"]
+    top_pokemon = [
+        "charizard",
+        "garchomp",
+        "lucario",
+        "dragonite",
+        "metagross",
+        "gardevoir",
+    ]
     squad = []
 
     for name in top_pokemon:
@@ -53,14 +69,15 @@ async def create_tournament_squad() -> str:
 
     return "Tournament Squad:\n" + "\n".join(squad)
 
+
 # --- Ferramenta (Tool): Listar Pokémon populares ---
 @mcp.tool()
 async def list_popular_pokemon() -> str:
     """Listar Pokémon populares para torneios."""
-    return "\n".join([
-        "Charizard", "Garchomp", "Lucario",
-        "Dragonite", "Metagross", "Gardevoir"
-    ])
+    return "\n".join(
+        ["Charizard", "Garchomp", "Lucario", "Dragonite", "Metagross", "Gardevoir"]
+    )
+
 
 # --- Ponto de entrada ---
 if __name__ == "__main__":

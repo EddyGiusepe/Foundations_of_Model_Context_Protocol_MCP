@@ -5,11 +5,22 @@
 Link de estudo: [mcp pokemon](https://www.youtube.com/watch?v=Fhy_VFMlE9s)
 
 
-## Instalação e Configuração
+![](https://tools.wingzero.tw/assets/upload/1656490351056_0.jpg)
+
+
+Este é um servidor MCP (Model Context Protocol) simples que se conecta à [PokéAPI](https://pokeapi.co/) e expõe ferramentas que um LLM pode usar para buscar dados de ``Pokémon``, listar Pokémon populares e montar um time de torneio.
+
+Ele usa a biblioteca FastMCP para buscar informações sobre Pokémon por meio de um protocolo padronizado que funciona perfeitamente com ``LLMs`` e ``agentes de IA``.
+
+
+
+
+
+## <font color="red">Instalação e Configuração</font>
 
 Para executar este servidor Pokemon MCP, siga os passos abaixo:
 
-### 1. Instalação do Node.js
+### ``1.`` <font color="blue">Instalação do Node.js</font>
 
 Remova versões anteriores ou pacotes conflitantes:
 ```bash
@@ -40,18 +51,35 @@ node -v
 npm -v
 ```
 
-### 2. Instalação do MCP
+### ``2.`` <font color="blue">Instalação do MCP e httpx</font>
 
-Instale o pacote MCP:
+Instale o pacote ``MCP``:
 ```bash
-pip install -U mcp
+uv add mcp[cli] httpx
 ```
 
-### 3. Executando o Servidor
+### ``3.`` <font color="blue">Executando o Servidor em modo de desenvolvimento</font>
 
 Para iniciar o servidor e a interface web:
 ```bash
 mcp dev poke.py
 ```
 
-Acesse a interface no navegador através do endereço mostrado no terminal (geralmente http://localhost:8000).
+## <font color="red">Testando o Servidor</font>
+
+Você pode testar o servidor no modo de desenvolvimento, para isso, você deve seguir os passos abaixo:
+
+```bash
+cd Pokemon_MCP_Server
+
+mcp dev poke.py
+```
+Logo após, você observará a seguinte interface:
+
+![](./MCP_pokemon.png)
+
+
+![](./MCP_pokemon_list.png)
+
+
+Thank God!

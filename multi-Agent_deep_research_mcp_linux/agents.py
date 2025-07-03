@@ -1,6 +1,11 @@
+#! /usr/bin/env python3
+"""
+Senior Data Scientist.: Dr. Eddy Giusepe Chirinos Isidro
+
+Este projeto foi baseado no 
+"""
 import os
 from typing import Type
-from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 from linkup import LinkupClient
 from crewai import Agent, Task, Crew, Process, LLM
@@ -21,9 +26,7 @@ def get_llm_client():
         base_url="http://localhost:11434"
     )
 
-# Define LinkUp Search Tool
-
-
+# Define LinkUp Search Tool:
 class LinkUpSearchInput(BaseModel):
     """Input schema for LinkUp Search Tool."""
     query: str = Field(description="The search query to perform")

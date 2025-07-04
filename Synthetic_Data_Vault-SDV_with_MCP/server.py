@@ -4,7 +4,10 @@ Senior Data Scientist.; Dr. Eddy Giusepe Chirinos Isidro
 
 Script server.py
 ================
-Este script define um servidor MCP para a ferramenta SDV.
+Aqui, temos um script de servidor que expõe a ferramenta usando a 
+biblioteca MCP, decorando as funções usando o tooldecorador.
+
+Com ferramentas e servidor prontos, vamos integrá-lo ao nosso Cursor IDE!
 """
 from mcp.server.fastmcp import FastMCP
 from tools import generate, evaluate, visualize

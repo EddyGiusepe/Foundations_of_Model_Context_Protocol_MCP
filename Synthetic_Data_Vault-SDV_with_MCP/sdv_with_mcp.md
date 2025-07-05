@@ -28,6 +28,24 @@ A seguir se mostra uma visão geral do sistema que vamos construir:
 ![](https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45254dff-1dd3-4f53-99c4-e56e91663459_1280x1064.gif)
 
 
+Basicamente, temos o seguinte processo:
+
+* O usuário envia uma consulta
+* O agente se conecta ao servidor `MCP` para encontrar ferramentas (tools)
+* O agente utiliza a ferramenta apropriada com base na consulta
+* Retorna resposta sobre criação, avaliação ou visualização de dados sintéticos
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

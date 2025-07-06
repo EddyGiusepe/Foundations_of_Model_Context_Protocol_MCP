@@ -178,3 +178,4 @@ credentials.json
 token.json
 mcp.json
 synthetic_data/
+evaluation_plots/

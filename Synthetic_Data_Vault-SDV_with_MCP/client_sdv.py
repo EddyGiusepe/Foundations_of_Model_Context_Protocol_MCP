@@ -127,9 +127,9 @@ class SDVClient:
         print("Digite suas consultas ou 'quit' para sair.")
         print("\nExemplo: Gerar dados sintéticos para os dados presentes na pasta '/home/karinag/1_GitHub/Foundations_of_Model_Context_Protocol_MCP/Synthetic_Data_Vault-SDV_with_MCP/data'")
         print("\nExemplo: Avalie os dados sintéticos que foram gerados para a pasta de dados real localizada em '/home/karinag/1_GitHub/Foundations_of_Model_Context_Protocol_MCP/Synthetic_Data_Vault-SDV_with_MCP/data'")
-        print("\nExemplo: Por favor, visualize a coluna 'amenities_fee' da tabela 'guests' dos dados localizados em '/home/karinag/1_GitHub/Foundations_of_Model_Context_Protocol_MCP/Synthetic_Data_Vault-SDV_with_MCP/synthetic_data' e compare a distribuição dos dados sintéticos com a dos dados reais para esta coluna específica.")
+        print("\nExemplo: Visualize a coluna 'amenities_fee' da tabela 'guests' dos dados localizados em '/home/karinag/1_GitHub/Foundations_of_Model_Context_Protocol_MCP/Synthetic_Data_Vault-SDV_with_MCP/synthetic_data' e compare a distribuição dos dados sintéticos com a dos dados reais para esta coluna específica.")
 
-        while True:Por favor, visualize a coluna 'amenities_fee' da tabela 'guests' dos dados localizados em '/home/karinag/1_GitHub/Foundations_of_Model_Context_Protocol_MCP/Synthetic_Data_Vault-SDV_with_MCP/synthetic_data' e compare a distribuição dos dados sintéticos com a dos dados reais para esta coluna específica.
+        while True:
             try:
                 query = input("\nDigite sua consulta: ").strip()
 

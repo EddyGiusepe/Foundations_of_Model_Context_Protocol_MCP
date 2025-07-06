@@ -46,6 +46,5 @@ Basicamente, temos o seguinte processo:
 
 
 
-
-
+Thank God 🤓!
 

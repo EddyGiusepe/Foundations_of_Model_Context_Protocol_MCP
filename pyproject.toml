@@ -7,6 +7,9 @@ requires-python = ">=3.11"
 dependencies = [
     "anthropic>=0.54.0",
     "crewai>=0.130.0",
+    "email-validator>=2.2.0",
+    "fastapi>=0.115.13",
+    "fastapi-mcp>=0.4.0",
     "google-api-python-client>=2.173.0",
     "google-auth>=2.40.3",
     "google-auth-oauthlib>=1.2.2",
@@ -16,16 +19,19 @@ dependencies = [
     "kaleido>=1.0.0",
     "linkup-sdk>=0.2.6",
     "litserve>=0.2.12",
-    "mcp[cli]>=1.9.4",
+    "mcp[cli]==1.12.2",
+    "motor>=3.7.1",
     "openai>=1.90.0",
     "plotly>=6.2.0",
     "pydantic>=2.11.1",
     "python-dotenv>=1.1.0",
+    "python-mcp-client>=0.1.2",
     "requests>=2.32.3",
     "sdv>=1.24.0",
     "streamlit>=1.46.0",
     "torch>=2.7.1",
     "transformers>=4.52.4",
+    "uvicorn>=0.34.3",
 ]
 
 [dependency-groups]

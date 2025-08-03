@@ -1,3 +1,20 @@
+#! /usr/bin/env python3
+"""
+Senior Data Scientist.: Dr. Eddy Giusepe Chirinos Isidro
+
+Link de estudo --->  https://www.youtube.com/watch?v=t_GnunupWzQ
+
+Script main.py
+==============
+Este script cria uma API simples para gerenciar lembretes com operações CRUD.
+Usamos FastAPI para criar a API e MongoDB para armazenar os dados.
+
+Executar
+--------
+uv run main.py
+
+Você deve acessar a URL: http://localhost:8000/docs para testar a API.
+"""
 from fastapi import FastAPI, HTTPException, status
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, Field
@@ -17,10 +34,9 @@ app = FastAPI(
 )
 
 mcp = FastApiMCP(app)
-
-#mcp.mount()
+mcp.mount()
 # Mount the MCP server to the FastAPI app
-mcp.mount_http()
+#mcp.mount_http()
 
 
 # Conexão MongoDB:
@@ -199,4 +215,3 @@ async def delete_reminder(reminder_id: str):
 
 # But if you re-run the setup, the new endpoints will now be exposed.
 mcp.setup_server()
-

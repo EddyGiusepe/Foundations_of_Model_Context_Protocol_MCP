@@ -6,8 +6,9 @@ Link de estudo --->  https://www.youtube.com/watch?v=t_GnunupWzQ
 
 Script main.py
 ==============
-Este script cria uma API simples para gerenciar lembretes com operações CRUD.
-Usamos FastAPI para criar a API e MongoDB para armazenar os dados.
+Este script cria uma API simples para gerenciar lembretes com operações
+CRUD (Create, Read, Update, Delete). Usamos FastAPI para criar a 
+API e MongoDB para armazenar os dados.
 
 Executar
 --------
@@ -22,15 +23,30 @@ from typing import Optional, List
 from datetime import datetime
 import uuid
 from fastapi_mcp import FastApiMCP
+from typing import Optional, List, AsyncGenerator
+from contextlib import asynccontextmanager
+
+# Gerenciador de ciclo de vida da aplicação
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
+    # Código executado durante a inicialização
+    app.mongodb_client = AsyncIOMotorClient("mongodb://mongodb:27017")
+    app.mongodb = app.mongodb_client["reminders_db"]
+    
+    yield  # Aqui a aplicação é executada
+    
+    # Código executado durante o encerramento
+    app.mongodb_client.close()
 
 # Metadados da API aprimorados:
 app = FastAPI(
-    title="Reminders API",
-    description="Uma API simples para gerenciar lembretes com operações CRUD",
+    title="API de Lembretes",
+    description="Uma API simples para gerenciar lembretes com operações CRUD (Create, Read, Update, Delete)",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
-    openapi_url="/openapi.json"
+    openapi_url="/openapi.json",
+    lifespan=lifespan
 )
 
 mcp = FastApiMCP(app)
@@ -39,15 +55,15 @@ mcp.mount()
 #mcp.mount_http()
 
 
-# Conexão MongoDB:
-@app.on_event("startup")
-async def startup_db_client():
-    app.mongodb_client = AsyncIOMotorClient("mongodb://mongodb:27017")
-    app.mongodb = app.mongodb_client["reminders_db"]
+# Conexão com o MongoDB:
+#@app.on_event("startup")
+#async def startup_db_client():
+#    app.mongodb_client = AsyncIOMotorClient("mongodb://mongodb:27017")
+#    app.mongodb = app.mongodb_client["reminders_db"]
 
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    app.mongodb_client.close()
+#@app.on_event("shutdown")
+#async def shutdown_db_client():
+#    app.mongodb_client.close()
 
 # Modelos Pydantic:
 class ReminderBase(BaseModel):
